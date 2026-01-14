@@ -22,14 +22,20 @@ export const About: React.FC<AboutProps> = ({ prImages }) => {
                     initial={{ opacity: 0, scale: 0.95, y: 30 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ delay: idx * 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className={`relative overflow-hidden rounded-[2.5rem] border border-[#260B01]/10 shadow-2xl ${idx % 2 === 0 ? 'mt-16' : 'md:mt-0'}`}
+                    className={`relative overflow-hidden rounded-[2.5rem] border border-[#260B01]/10 shadow-2xl ${
+                      idx === 1 ? 'md:mt-16' : 'mt-0'
+                    } ${
+                      idx === 2 ? 'md:col-span-2 md:max-w-[75%] md:mx-auto mt-8' : ''
+                    }`}
                   >
                     {/* Applying a creative cinematic filter via CSS */}
                     <div className="relative overflow-hidden group">
                       <img 
                         src={img} 
                         alt={`Ann & McBryan PR Portrait ${idx + 1}`} 
-                        className="w-full aspect-[4/5] object-cover transition-all duration-1000 group-hover:scale-105" 
+                        className={`w-full transition-all duration-1000 group-hover:scale-105 ${
+                          idx === 2 ? 'h-auto' : 'aspect-[4/5] object-cover'
+                        }`} 
                         style={{ 
                           filter: 'contrast(1.05) brightness(0.98) saturate(0.9) sepia(0.05)',
                         }}

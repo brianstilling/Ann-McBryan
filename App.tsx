@@ -22,7 +22,8 @@ const App: React.FC = () => {
   // Setting the specific images for 'The Geometry of a Song' section
   const [prImages, setPrImages] = useState<string[]>([
     "https://lh3.googleusercontent.com/d/1qKjfjRaT30H2DHq9Jr5vk0s_jZRdj4n6",
-    "https://lh3.googleusercontent.com/d/1sgAVbXWHbLXav_svAsE_SWE2nrIhwwc2"
+    "https://lh3.googleusercontent.com/d/1sgAVbXWHbLXav_svAsE_SWE2nrIhwwc2",
+    "https://lh3.googleusercontent.com/d/16koF1cw-DfwJF4A1J6qxGzbbBVTXFGXt"
   ]);
   
   const [isLoading, setIsLoading] = useState(true);
