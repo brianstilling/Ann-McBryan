@@ -1,20 +1,17 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Ann & McBryan — Songs Across Europe
 
-# Run and deploy your AI Studio app
+A visually stunning tour platform for the acoustic duo Ann & McBryan, featuring concert listings and booking requests.
 
-This contains everything you need to run your app locally.
+## Tech Stack
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Leaflet (for the tour map)
+- Google Gemini API (for asset generation)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1D4fQWLNMvKSXvf8EmL1HOidhEtm9EvBq
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Getting Started
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+4. Build for production: `npm run build`

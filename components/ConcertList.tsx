@@ -96,7 +96,7 @@ const FeaturedSession: React.FC<{ concert: Concert }> = ({ concert }) => (
 
         <div className="flex flex-col items-center lg:items-end gap-5 w-full lg:w-auto">
           <a 
-            href="https://www.facebook.com/AnnMcBryanDuo"
+            href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full lg:w-auto px-10 py-5 bg-[#260B01] hover:bg-[#D4AF37] text-white hover:text-[#260B01] rounded-[1.5rem] font-vintage tracking-[0.4em] text-[10px] uppercase font-bold transition-all duration-500 shadow-xl flex items-center justify-center gap-3 group/btn"
@@ -142,7 +142,7 @@ const SessionRow: React.FC<{ concert: Concert; index: number }> = ({ concert, in
     </div>
     <div className="mt-8 md:mt-0 flex items-center gap-5">
       <a 
-        href="https://www.facebook.com/AnnMcBryanDuo"
+        href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
         target="_blank"
         rel="noopener noreferrer"
         className="relative px-10 py-4 bg-[#260B01] hover:bg-[#D4AF37] hover:text-[#260B01] text-white font-bold font-vintage tracking-[0.3em] text-[9px] rounded-full transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-xl group/btn"
@@ -150,7 +150,7 @@ const SessionRow: React.FC<{ concert: Concert; index: number }> = ({ concert, in
         <span>INFO</span>
         <Ticket className="w-3.5 h-3.5 group-hover/btn:rotate-12 transition-transform" />
       </a>
-      <a href="https://www.facebook.com/AnnMcBryanDuo" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-[#260B01]/5 flex items-center justify-center text-[#260B01]/20 hover:text-[#D4AF37] transition-all">
+      <a href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-[#260B01]/5 flex items-center justify-center text-[#260B01]/20 hover:text-[#D4AF37] transition-all">
         <ExternalLink className="w-4 h-4" />
       </a>
     </div>

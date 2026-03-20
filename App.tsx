@@ -86,7 +86,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     // Versioning check to ensure Bønnerup and other updates display correctly
-    const DATA_VERSION = 'v1.2_bonnerup_official_photos';
+    const DATA_VERSION = 'v1.4_merl_update';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     

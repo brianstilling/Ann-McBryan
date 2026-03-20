@@ -248,8 +248,8 @@ export const BookingForm: React.FC = () => {
                     <div className="space-y-6">
                       <label className="text-[9px] uppercase tracking-[0.4em] text-[#8D5B2F] font-bold block">Proposed July 2026 Dates</label>
                       <div className="grid grid-cols-7 gap-1 md:gap-2">
-                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => (
-                          <div key={d} className="text-[8px] text-center font-bold text-[#260B01]/20 pb-1">{d}</div>
+                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
+                          <div key={`${d}-${i}`} className="text-[8px] text-center font-bold text-[#260B01]/20 pb-1">{d}</div>
                         ))}
                         {[null, null, null].map((_, i) => <div key={`o-${i}`}></div>)}
                         {julyDays.map(day => (
