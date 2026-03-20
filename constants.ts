@@ -25,9 +25,9 @@ export const TOUR_DATA: Concert[] = [
   },
   {
     id: 'session-2026-merl',
-    city: 'Merl an der Mosel',
+    city: 'Mosel, Germany',
     country: 'Germany',
-    venue: 'Scheid Wein',
+    venue: 'Scheid Wein - Merl and der Mosel',
     address: 'Hauptstraße 50, 56856 Zell (Mosel)',
     date: 'July 17, 2026',
     time: 'TBA',
