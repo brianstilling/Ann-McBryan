@@ -24,6 +24,39 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.facebook.com/events/2537513756664081?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22user_timeline%22%7D%2C%7B%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22groups_highlight_units%22%7D]%2C%22ref_notif_type%22%3Anull%7D'
   },
   {
+    id: 'session-2026-leipzig-5',
+    city: 'Leipzig, Germany',
+    country: 'Germany',
+    venue: 'To be announced concert',
+    address: 'Leipzig, Germany',
+    date: 'July 5, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 51.3397, lng: 12.3731 }
+  },
+  {
+    id: 'session-2026-leipzig-6',
+    city: 'Leipzig, Germany',
+    country: 'Germany',
+    venue: 'To be announced concert',
+    address: 'Leipzig, Germany',
+    date: 'July 6, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 51.3397, lng: 12.3731 }
+  },
+  {
+    id: 'session-2026-leipzig-7',
+    city: 'Leipzig, Germany',
+    country: 'Germany',
+    venue: 'To be announced concert',
+    address: 'Leipzig, Germany',
+    date: 'July 7, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 51.3397, lng: 12.3731 }
+  },
+  {
     id: 'session-2026-merl',
     city: 'Mosel, Germany',
     country: 'Germany',
