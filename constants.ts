@@ -27,12 +27,36 @@ export const TOUR_DATA: Concert[] = [
     id: 'session-2026-merl',
     city: 'Mosel, Germany',
     country: 'Germany',
-    venue: 'Scheid Wein - Merl and der Mosel',
+    venue: 'Scheid Wein - Merl an der Mosel',
     address: 'Hauptstraße 50, 56856 Zell (Mosel)',
     date: 'July 17, 2026',
     time: 'TBA',
     status: 'upcoming',
     coordinates: { lat: 50.0449, lng: 7.1648 },
     ticketsUrl: 'https://scheid-wein.de/'
+  },
+  {
+    id: 'session-2026-merl-2',
+    city: 'Mosel, Germany',
+    country: 'Germany',
+    venue: 'Scheid Wein - Merl an der Mosel',
+    address: 'Hauptstraße 50, 56856 Zell (Mosel)',
+    date: 'July 19, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 50.0449, lng: 7.1648 },
+    ticketsUrl: 'https://scheid-wein.de/'
+  },
+  {
+    id: 'session-2026-enkirch',
+    city: 'Mosel, Germany',
+    country: 'Germany',
+    venue: "Tom's Musik-Keller",
+    address: 'Weingasse 12, 56850 Enkirch',
+    date: 'July 23, 2026',
+    time: '20:00',
+    status: 'upcoming',
+    coordinates: { lat: 49.9833, lng: 7.1167 },
+    ticketsUrl: 'https://www.t-o-m-s.de/'
   }
 ];
