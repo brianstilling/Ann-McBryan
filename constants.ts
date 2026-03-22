@@ -24,6 +24,18 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.facebook.com/events/2537513756664081?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22user_timeline%22%7D%2C%7B%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22groups_highlight_units%22%7D]%2C%22ref_notif_type%22%3Anull%7D'
   },
   {
+    id: 'session-2026-grenaa',
+    city: 'Grenaa, Denmark',
+    country: 'Denmark',
+    venue: 'Grenaa Strand Camping',
+    address: 'Exclusive session for campsite guests',
+    date: 'July 2, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 56.4097, lng: 10.9234 },
+    ticketsUrl: 'https://grenaastrandcamping.dk/'
+  },
+  {
     id: 'session-2026-leipzig-5',
     city: 'Leipzig, Germany',
     country: 'Germany',
