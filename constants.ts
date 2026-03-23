@@ -37,14 +37,15 @@ export const TOUR_DATA: Concert[] = [
   },
   {
     id: 'session-2026-leipzig-5',
-    city: 'Leipzig, Germany',
+    city: 'Rackwitz (Leipzig), Germany',
     country: 'Germany',
-    venue: 'To be announced concert',
-    address: 'Leipzig, Germany',
+    venue: 'The Beachclub at Schladitzer see - All-in-Sea Camp & Sport Resort',
+    address: 'Haynaer Straße, 04519 Rackwitz',
     date: 'July 5, 2026',
     time: 'TBA',
     status: 'upcoming',
-    coordinates: { lat: 51.3397, lng: 12.3731 }
+    coordinates: { lat: 51.43685, lng: 12.3427 },
+    ticketsUrl: 'https://www.campdavid-sportresort.de/'
   },
   {
     id: 'session-2026-leipzig-6',

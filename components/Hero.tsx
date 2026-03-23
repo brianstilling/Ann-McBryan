@@ -1,7 +1,18 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Music, MapPin, ChevronDown, Youtube, Facebook } from 'lucide-react';
+import { Music, MapPin, ChevronDown, Youtube, Facebook, Instagram } from 'lucide-react';
 import { COLORS } from '../constants';
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-.13-.08-.26-.17-.38-.26v7.02c0 1.17-.14 2.35-.54 3.45-.99 2.8-3.56 4.77-6.54 4.86-3.06.13-6.1-1.95-6.98-4.89-.88-2.82.23-6.11 2.72-7.75 1.05-.7 2.32-1.02 3.58-1.01v4.03c-1.13-.04-2.34.45-2.93 1.41-.39.63-.47 1.43-.26 2.14.41 1.42 1.93 2.38 3.39 2.13 1.47-.25 2.48-1.67 2.48-3.13V.02z"/>
+  </svg>
+);
 
 interface HeroProps {
   backgroundImage: string | null;
@@ -128,6 +139,8 @@ export const Hero: React.FC<HeroProps> = ({ backgroundImage }) => {
         <motion.div initial={{ height: 0 }} animate={{ height: 100 }} transition={{ delay: 1 }} className="w-px bg-white/20 mx-auto"></motion.div>
         <motion.a href="https://www.youtube.com/@AnnMcBryan/videos" target="_blank" className="text-white/30 hover:text-[#8D5B2F] transition-colors"><Youtube className="w-5 h-5" /></motion.a>
         <motion.a href="https://www.facebook.com/AnnMcBryanDuo" target="_blank" className="text-white/30 hover:text-[#8D5B2F] transition-colors"><Facebook className="w-5 h-5" /></motion.a>
+        <motion.a href="https://www.instagram.com/ann_and_mcbryan/" target="_blank" className="text-white/30 hover:text-[#8D5B2F] transition-colors"><Instagram className="w-5 h-5" /></motion.a>
+        <motion.a href="https://www.tiktok.com/@annmcbryan" target="_blank" className="text-white/30 hover:text-[#8D5B2F] transition-colors"><TikTokIcon className="w-5 h-5" /></motion.a>
       </div>
 
       {/* Scroll Indicator */}
