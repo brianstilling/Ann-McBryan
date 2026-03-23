@@ -104,5 +104,17 @@ export const TOUR_DATA: Concert[] = [
     status: 'upcoming',
     coordinates: { lat: 49.9833, lng: 7.1167 },
     ticketsUrl: 'https://www.t-o-m-s.de/'
+  },
+  {
+    id: 'session-2026-wijchen',
+    city: 'Wijchen, The Netherlands',
+    country: 'The Netherlands',
+    venue: 'Kasteel Wijchen',
+    address: 'Kasteellaan 9, 6602 DA Wijchen',
+    date: 'July 27, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 51.8105, lng: 5.7228 },
+    ticketsUrl: 'https://www.kasteelwijchen.nl/'
   }
 ];
