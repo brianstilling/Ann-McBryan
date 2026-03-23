@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Heart, Mail, ChevronDown, CheckCircle2, Loader2, Sparkles, Check, Info, Calendar as CalendarIcon, MapPin } from 'lucide-react';
+import { Send, Heart, Mail, ChevronDown, CheckCircle2, Loader2, Sparkles, Check, Info, Calendar as CalendarIcon, MapPin, Lock } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
+import { Concert } from '../types';
 
-export const BookingForm: React.FC = () => {
+interface BookingFormProps {
+  sessions: Concert[];
+}
+
+export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
   const [status, setStatus] = useState<'idle' | 'processing' | 'sent' | 'error'>('idle');
   const [copyFeedback, setCopyFeedback] = useState(false);
   const [selectedDates, setSelectedDates] = useState<number[]>([]);
@@ -30,7 +35,22 @@ export const BookingForm: React.FC = () => {
 
   const julyDays = Array.from({ length: 31 }, (_, i) => i + 1);
 
+  // Get booked days from sessions in July 2026
+  const bookedDays = sessions
+    .filter(concert => {
+      const dateStr = concert.date.toLowerCase();
+      return dateStr.includes('july') && dateStr.includes('2026');
+    })
+    .map(concert => {
+      const parts = concert.date.split(' ');
+      const dayStr = parts[1]?.replace(',', '');
+      return parseInt(dayStr, 10);
+    })
+    .filter(day => !isNaN(day));
+
   const toggleDate = (day: number) => {
+    if (bookedDays.includes(day)) return; // Prevent selecting booked dates
+    
     setSelectedDates(prev => 
       prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day].sort((a, b) => a - b)
     );
@@ -246,32 +266,63 @@ export const BookingForm: React.FC = () => {
                     </div>
 
                     <div className="space-y-6">
-                      <label className="text-[9px] uppercase tracking-[0.4em] text-[#8D5B2F] font-bold block">Proposed July 2026 Dates</label>
+                      <div className="flex items-center justify-between">
+                        <label className="text-[9px] uppercase tracking-[0.4em] text-[#8D5B2F] font-bold block">Proposed July 2026 Dates</label>
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-[#8D5B2F]/20 border border-[#8D5B2F]/30"></div>
+                            <span className="text-[8px] font-vintage tracking-widest text-[#260B01]/40 uppercase font-bold">Booked</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-[#8D5B2F]"></div>
+                            <span className="text-[8px] font-vintage tracking-widest text-[#8D5B2F] uppercase font-bold">Selected</span>
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="grid grid-cols-7 gap-1 md:gap-2">
                         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
                           <div key={`${d}-${i}`} className="text-[8px] text-center font-bold text-[#260B01]/20 pb-1">{d}</div>
                         ))}
                         {[null, null, null].map((_, i) => <div key={`o-${i}`}></div>)}
-                        {julyDays.map(day => (
-                          <button
-                            key={day}
-                            type="button"
-                            onClick={() => toggleDate(day)}
-                            className={`
-                              aspect-square flex items-center justify-center text-[10px] md:text-xs font-serif rounded-full transition-all border
-                              ${selectedDates.includes(day) 
-                                ? 'bg-[#8D5B2F] text-white border-[#8D5B2F] shadow-lg' 
-                                : 'bg-transparent text-[#260B01] border-transparent hover:border-[#8D5B2F]/30'}
-                            `}
-                          >
-                            {day}
-                          </button>
-                        ))}
+                        {julyDays.map(day => {
+                          const isBooked = bookedDays.includes(day);
+                          const isSelected = selectedDates.includes(day);
+                          
+                          return (
+                            <button
+                              key={day}
+                              type="button"
+                              disabled={isBooked}
+                              onClick={() => toggleDate(day)}
+                              className={`
+                                aspect-square flex items-center justify-center text-[10px] md:text-xs font-serif rounded-full transition-all border relative group
+                                ${isBooked 
+                                  ? 'bg-[#8D5B2F]/5 text-[#260B01]/20 border-[#260B01]/5 cursor-not-allowed' 
+                                  : isSelected 
+                                    ? 'bg-[#8D5B2F] text-white border-[#8D5B2F] shadow-lg' 
+                                    : 'bg-transparent text-[#260B01] border-transparent hover:border-[#8D5B2F]/30'}
+                              `}
+                            >
+                              {day}
+                              {isBooked && (
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[#260B01]/80 rounded-full">
+                                  <Lock className="w-3 h-3 text-white" />
+                                </div>
+                              )}
+                            </button>
+                          );
+                        })}
                       </div>
                       <div className="min-h-[20px]">
                         {selectedDates.length > 0 && (
                           <span className="text-[9px] text-[#8D5B2F] font-bold uppercase tracking-widest italic">
                             {selectedDates.map(d => `July ${d}`).join(', ')}
+                          </span>
+                        )}
+                        {selectedDates.length === 0 && (
+                          <span className="text-[9px] text-[#260B01]/30 font-bold uppercase tracking-widest italic">
+                            No dates selected yet
                           </span>
                         )}
                       </div>

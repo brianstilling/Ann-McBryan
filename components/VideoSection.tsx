@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Youtube, ExternalLink, Play, Music2 } from 'lucide-react';
+import { Youtube, ExternalLink, Play, Music2, Instagram, Music } from 'lucide-react';
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-.13-.08-.26-.17-.38-.26v7.02c0 1.17-.14 2.35-.54 3.45-.99 2.8-3.56 4.77-6.54 4.86-3.06.13-6.1-1.95-6.98-4.89-.88-2.82.23-6.11 2.72-7.75 1.05-.7 2.32-1.02 3.58-1.01v4.03c-1.13-.04-2.34.45-2.93 1.41-.39.63-.47 1.43-.26 2.14.41 1.42 1.93 2.38 3.39 2.13 1.47-.25 2.48-1.67 2.48-3.13V.02z"/>
+  </svg>
+);
 
 export const VideoSection: React.FC = () => {
   // Main link to all videos
   const videosLink = "https://www.youtube.com/@AnnMcBryan/videos";
+  const instagramLink = "https://www.instagram.com/ann_and_mcbryan/";
+  const tiktokLink = "https://www.tiktok.com/@annmcbryan";
 
   return (
     <section className="py-32 bg-[#DBD5CA] relative overflow-hidden">
@@ -45,7 +58,7 @@ export const VideoSection: React.FC = () => {
             "Music is the language of the voyage. We stop wherever the light is right and the air is still."
           </motion.p>
           
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-8">
             <motion.a 
               href={videosLink}
               target="_blank"
@@ -58,6 +71,38 @@ export const VideoSection: React.FC = () => {
               Watch on YouTube
               <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
             </motion.a>
+
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <motion.a
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 text-[#8D5B2F] hover:text-[#260B01] transition-colors font-vintage tracking-[0.2em] text-[11px] uppercase font-bold group"
+              >
+                <Instagram className="w-5 h-5" />
+                Instagram: @ann_and_mcbryan
+                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity" />
+              </motion.a>
+
+              <motion.a
+                href={tiktokLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 text-[#8D5B2F] hover:text-[#260B01] transition-colors font-vintage tracking-[0.2em] text-[11px] uppercase font-bold group"
+              >
+                <TikTokIcon className="w-5 h-5" />
+                TikTok: @annmcbryan
+                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity" />
+              </motion.a>
+            </div>
             
             <p className="text-[9px] text-[#260B01]/40 font-bold uppercase tracking-[0.4em] leading-relaxed max-w-sm">
               Explore our full catalog of acoustic sessions and nomadic diaries on our official channel.

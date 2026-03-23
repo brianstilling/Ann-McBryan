@@ -159,7 +159,7 @@ const App: React.FC = () => {
         <ConcertList sessions={sessions} />
         <TourMap sessions={sessions} />
         <VideoSection />
-        <BookingForm />
+        <BookingForm sessions={sessions} />
         <WishSongForm />
       </main>
       <Footer />
