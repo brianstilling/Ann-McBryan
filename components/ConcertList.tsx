@@ -129,6 +129,12 @@ const SessionRow: React.FC<{ concert: Concert; index: number }> = ({ concert, in
         <div className="flex items-center gap-3 mb-1.5">
           <span className="text-[9px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase">{concert.country}</span>
           <div className="h-px w-6 bg-[#D4AF37]/30"></div>
+          {concert.time && concert.time !== 'TBA' && (
+            <div className="flex items-center gap-1.5 text-[#8D5B2F]">
+              <Clock className="w-2.5 h-2.5" />
+              <span className="text-[9px] font-bold tracking-widest">{concert.time}</span>
+            </div>
+          )}
         </div>
         <h3 className="text-3xl font-serif text-[#260B01] mb-2 leading-tight font-bold group-hover:text-[#8D5B2F] transition-colors">{concert.city}</h3>
         <div className="flex items-start gap-2.5 text-[13px] text-[#260B01]/50 italic font-serif">

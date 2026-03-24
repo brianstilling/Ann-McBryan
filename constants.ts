@@ -36,6 +36,18 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://grenaastrandcamping.dk/'
   },
   {
+    id: 'session-2026-braedstrup',
+    city: 'Brædstrup, Denmark',
+    country: 'Denmark',
+    venue: 'Water of Life',
+    address: 'Søndergade 1, 8740 Brædstrup',
+    date: 'July 3, 2026',
+    time: '16:00',
+    status: 'upcoming',
+    coordinates: { lat: 55.9730, lng: 9.6100 },
+    ticketsUrl: 'https://wateroflife.dk/'
+  },
+  {
     id: 'session-2026-leipzig-5',
     city: 'Rackwitz (Leipzig), Germany',
     country: 'Germany',
