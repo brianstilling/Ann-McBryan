@@ -85,8 +85,8 @@ const App: React.FC = () => {
     const handleHashChange = () => setIsAdmin(window.location.hash === '#admin');
     window.addEventListener('hashchange', handleHashChange);
 
-    // Versioning check to ensure Bønnerup and other updates display correctly
-    const DATA_VERSION = 'v1.25_wijchen_braedstrup_updated';
+    // Versioning check to ensure Rackwitz and other updates display correctly
+    const DATA_VERSION = 'v1.26_rackwitz_updated';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     
