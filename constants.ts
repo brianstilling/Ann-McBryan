@@ -82,6 +82,18 @@ export const TOUR_DATA: Concert[] = [
     coordinates: { lat: 51.3397, lng: 12.3731 }
   },
   {
+    id: 'session-2026-triberg',
+    city: 'Triberg, Germany',
+    country: 'Germany',
+    venue: 'Daheim Triberg',
+    address: 'An der Gutach 1, 78098 Triberg',
+    date: 'July 11, 2026',
+    time: '20:00',
+    status: 'upcoming',
+    coordinates: { lat: 48.1297, lng: 8.2319 },
+    ticketsUrl: 'https://daheim-triberg.de/'
+  },
+  {
     id: 'session-2026-merl',
     city: 'Mosel, Germany',
     country: 'Germany',
