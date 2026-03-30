@@ -46,7 +46,7 @@ const App: React.FC = () => {
   };
 
   const generatePrAssets = async (force = false) => {
-    const STORAGE_KEY = 'ann_mcbryan_pr_v10_official_override';
+    const STORAGE_KEY = 'ann_mcbryan_pr_v12_format_fix';
     const savedPrImages = localStorage.getItem(STORAGE_KEY);
     
     // Only use saved images if they were manually forced/regenerated via Admin
@@ -86,7 +86,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     // Versioning check to ensure Rackwitz and other updates display correctly
-    const DATA_VERSION = 'v1.30_triberg_final';
+    const DATA_VERSION = 'v1.33_color_rendering_fix';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     

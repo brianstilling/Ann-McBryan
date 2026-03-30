@@ -39,11 +39,16 @@ export const Hero: React.FC<HeroProps> = ({ backgroundImage }) => {
         className="absolute inset-0 z-0"
       >
         {backgroundImage ? (
-          <img 
+          <motion.img 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
             src={backgroundImage} 
             alt="Ann & McBryan Hero" 
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-            onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ 
+              filter: 'sepia(0.15) contrast(1.1) brightness(0.85) saturate(0.95)' 
+            }}
             onError={(e) => {
               console.error("Hero image failed to load. Check sharing settings on Google Drive.");
               e.currentTarget.style.display = 'none';
@@ -53,9 +58,9 @@ export const Hero: React.FC<HeroProps> = ({ backgroundImage }) => {
           <div className="absolute inset-0 bg-[#260B01]" />
         )}
         
-        {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#260B01] via-[#260B01]/20 to-transparent z-10" />
-        <div className="absolute inset-0 bg-[#260B01]/40 mix-blend-color-burn z-10" />
+        {/* Cinematic Overlays - Using more stable blend modes for cross-browser consistency */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#260B01] via-[#260B01]/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-[#260B01]/30 mix-blend-multiply z-10" />
       </motion.div>
 
       {/* Content */}
