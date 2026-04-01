@@ -12,6 +12,18 @@ export const COLORS = {
 // Application automatically promotes the first chronological future date to "Featured"
 export const TOUR_DATA: Concert[] = [
   {
+    id: 'session-2026-grenaa-festival',
+    city: 'Grenaa',
+    country: 'Denmark',
+    venue: 'Grenaa Gademusiker Festival',
+    address: 'Grenaa centrum',
+    date: 'May 22, 2026',
+    time: '16:00-21:00',
+    status: 'upcoming',
+    coordinates: { lat: 56.4172, lng: 10.8878 },
+    ticketsUrl: 'https://www.grenaagademusikerfestival.dk/'
+  },
+  {
     id: 'session-2026-bonnerup',
     city: 'Bønnerup',
     country: 'Denmark',
