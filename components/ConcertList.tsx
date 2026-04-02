@@ -35,7 +35,7 @@ const DateBlock: React.FC<{ date: string; variant?: 'standard' | 'large' }> = ({
     return (
       <div className={`flex flex-col items-center justify-center border-[#260B01]/10 text-center ${isLarge ? 'min-w-[120px] pr-8' : 'min-w-[100px] border-r pr-10 md:pr-16'}`}>
         <span className={`${isLarge ? 'text-4xl' : 'text-3xl'} font-serif text-[#260B01] font-bold leading-none`}>TBA</span>
-        <span className="text-[8px] font-vintage tracking-[0.2em] text-[#D4AF37] font-bold mt-2 uppercase opacity-60">DATE</span>
+        <span className="text-[8px] font-vintage tracking-[0.2em] text-[#8D5B2F] font-bold mt-2 uppercase opacity-80">DATE</span>
       </div>
     );
   }
@@ -46,8 +46,8 @@ const DateBlock: React.FC<{ date: string; variant?: 'standard' | 'large' }> = ({
   
   return (
     <div className={`flex flex-col items-center justify-center border-[#260B01]/10 ${isLarge ? 'min-w-[120px] pr-10 border-r' : 'min-w-[100px] border-r pr-10 md:pr-16'}`}>
-      <span className={`${isLarge ? 'text-6xl' : 'text-5xl'} font-serif text-[#260B01] font-bold leading-none group-hover:text-[#D4AF37] transition-colors`}>{day}</span>
-      <span className={`${isLarge ? 'text-xs mt-3' : 'text-[10px] mt-3'} font-vintage tracking-[0.4em] text-[#D4AF37] font-bold uppercase opacity-60`}>{month}</span>
+      <span className={`${isLarge ? 'text-6xl' : 'text-5xl'} font-serif text-[#260B01] font-bold leading-none group-hover:text-[#8D5B2F] transition-colors`}>{day}</span>
+      <span className={`${isLarge ? 'text-xs mt-3' : 'text-[10px] mt-3'} font-vintage tracking-[0.4em] text-[#8D5B2F] font-bold uppercase opacity-80`}>{month}</span>
     </div>
   );
 };
@@ -77,7 +77,7 @@ const FeaturedSession: React.FC<{ concert: Concert }> = ({ concert }) => (
             </div>
             
             <h3 className="text-4xl md:text-5xl font-serif text-[#260B01] font-bold mb-3 tracking-tight group-hover:text-[#8D5B2F] transition-colors">
-              {concert.city}, <span className="text-[#8D5B2F]/60 italic font-normal">{concert.country}</span>
+              {concert.city}, <span className="text-[#8D5B2F] italic font-normal">{concert.country}</span>
             </h3>
             
             <div className="flex flex-col gap-2">
@@ -127,8 +127,8 @@ const SessionRow: React.FC<{ concert: Concert; index: number }> = ({ concert, in
       <DateBlock date={concert.date} />
       <div>
         <div className="flex items-center gap-3 mb-1.5">
-          <span className="text-[9px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase">{concert.country}</span>
-          <div className="h-px w-6 bg-[#D4AF37]/30"></div>
+          <span className="text-[9px] font-bold tracking-[0.2em] text-[#8D5B2F] uppercase">{concert.country}</span>
+          <div className="h-px w-6 bg-[#8D5B2F]/30"></div>
           {concert.time && concert.time !== 'TBA' && (
             <div className="flex items-center gap-1.5 text-[#8D5B2F]">
               <Clock className="w-2.5 h-2.5" />
