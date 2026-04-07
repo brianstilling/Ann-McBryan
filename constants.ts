@@ -12,8 +12,19 @@ export const COLORS = {
 // Application automatically promotes the first chronological future date to "Featured"
 export const TOUR_DATA: Concert[] = [
   {
+    id: 'session-2026-veggerslev',
+    city: 'Veggerslev',
+    country: 'Denmark',
+    venue: 'Veggerslev Kirke',
+    address: 'Veggerslev, Denmark',
+    date: 'May 5, 2026',
+    time: '19:30',
+    status: 'upcoming',
+    coordinates: { lat: 56.4583, lng: 10.8583 }
+  },
+  {
     id: 'session-2026-grenaa-festival',
-    city: 'Grenaa',
+    city: 'Grenaa, Denmark',
     country: 'Denmark',
     venue: 'Grenaa Gademusiker Festival',
     address: 'Grenaa centrum',
@@ -25,7 +36,7 @@ export const TOUR_DATA: Concert[] = [
   },
   {
     id: 'session-2026-bonnerup',
-    city: 'Bønnerup',
+    city: 'Bønnerup, Denmark',
     country: 'Denmark',
     venue: 'Café Den Sidste Original',
     address: 'Ny Havnevej 25, 8585 Glesborg',
