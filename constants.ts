@@ -17,7 +17,7 @@ export const TOUR_DATA: Concert[] = [
     country: 'Denmark',
     venue: 'Veggerslev Kirke',
     address: 'Veggerslev, Denmark',
-    date: 'May 5, 2026',
+    date: 'May 7, 2026',
     time: '19:30',
     status: 'upcoming',
     coordinates: { lat: 56.4583, lng: 10.8583 }
