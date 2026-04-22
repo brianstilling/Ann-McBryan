@@ -68,7 +68,7 @@ export const TOUR_DATA: Concert[] = [
     time: '16:00',
     status: 'upcoming',
     coordinates: { lat: 55.9730, lng: 9.6100 },
-    ticketsUrl: 'https://wateroflife.dk/'
+    ticketsUrl: 'https://www.facebook.com/events/1698979277942607/?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22search%22%7D%2C%7B%22mechanism%22%3A%22attachment%22%2C%22surface%22%3A%22newsfeed%22%7D]%2C%22ref_notif_type%22%3Anull%7D'
   },
   {
     id: 'session-2026-leipzig-5',
