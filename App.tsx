@@ -14,10 +14,16 @@ import { Compass } from 'lucide-react';
 import { TOUR_DATA } from './constants';
 import { Concert } from './types';
 import { GoogleGenAI } from "@google/genai";
+// @ts-ignore
+import europeRoadTripBanner from './src/assets/images/europe_road_trip_banner_1780054250419.png';
 
 const App: React.FC = () => {
-  // Keeping the top image as it is
-  const heroImage = "https://lh3.googleusercontent.com/d/1Ucfoo7X4wKeKQXcGK5vCV_5jsBKCGaLg";
+  const [customHeroImage, setCustomHeroImage] = useState<string | null>(() => {
+    return localStorage.getItem('ann_mcbryan_custom_banner');
+  });
+
+  // Utilizing the newly uploaded high-quality European road trip master banner as fallback
+  const heroImage = customHeroImage || europeRoadTripBanner;
   
   // Setting the specific images for 'The Geometry of a Song' section
   const [prImages, setPrImages] = useState<string[]>([
@@ -137,13 +143,13 @@ const App: React.FC = () => {
 
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#8D5B2F] to-[#260B01] origin-left z-[60]" style={{ scaleX }} />
 
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-8 pointer-events-none">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-[#DBD5CA]/95 backdrop-blur-md px-6 py-6 border-b border-[#260B01]/5 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[#260B01] pointer-events-auto cursor-pointer flex flex-col items-center md:items-start group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <span className="font-serif text-4xl font-bold leading-none tracking-tight group-hover:text-[#8D5B2F] transition-all">Ann & McBryan</span>
-            <span className="font-vintage text-[9px] tracking-[0.6em] uppercase text-[#8D5B2F] mt-2 font-bold opacity-80">Songs Across Europe</span>
+          <div className="text-[#260B01] cursor-pointer flex flex-col items-center md:items-start group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="font-serif text-3xl md:text-4xl font-bold leading-none tracking-tight group-hover:text-[#8D5B2F] transition-all">Ann & McBryan</span>
+            <span className="font-vintage text-[9px] tracking-[0.5em] uppercase text-[#8D5B2F] mt-1.5 font-bold opacity-80">Songs Across Europe</span>
           </div>
-          <nav className="flex items-center gap-4 md:gap-8 text-[9px] uppercase tracking-[0.3em] font-vintage font-bold text-[#260B01] pointer-events-auto bg-[#DBD5CA]/70 backdrop-blur-2xl px-6 md:px-8 py-3 rounded-full border border-[#260B01]/5 shadow-2xl">
+          <nav className="flex items-center gap-4 md:gap-8 text-[9px] uppercase tracking-[0.3em] font-vintage font-bold text-[#260B01] bg-[#DBD5CA]/50 px-6 py-2.5 rounded-full border border-[#260B01]/5 shadow-sm">
             <button onClick={() => scrollToSection('about')} className="hover:text-[#8D5B2F] transition-colors relative group">The Chronicles</button>
             <button onClick={() => scrollToSection('wishlist')} className="hover:text-[#8D5B2F] transition-colors relative group">Request Session</button>
             <button onClick={() => scrollToSection('song-wish')} className="hover:text-[#8D5B2F] transition-colors relative group">Wish a Song</button>
@@ -152,8 +158,10 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      <main>
-        <Hero backgroundImage={heroImage} />
+      <main className="pb-12">
+        <div className="mt-8 md:mt-12 px-6 max-w-7xl mx-auto">
+          <Hero backgroundImage={heroImage} />
+        </div>
         <About prImages={prImages} />
         <Story title={storyTitle} />
         <ConcertList sessions={sessions} />
