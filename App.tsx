@@ -15,15 +15,11 @@ import { TOUR_DATA } from './constants';
 import { Concert } from './types';
 import { GoogleGenAI } from "@google/genai";
 // @ts-ignore
-import europeRoadTripBanner from './src/assets/images/europe_road_trip_banner_1780054250419.png';
+import enyaHeroBanner from './src/assets/images/enya_hero_banner_1780056000054.png';
 
 const App: React.FC = () => {
-  const [customHeroImage, setCustomHeroImage] = useState<string | null>(() => {
-    return localStorage.getItem('ann_mcbryan_custom_banner');
-  });
-
-  // Utilizing the newly uploaded high-quality European road trip master banner as fallback
-  const heroImage = customHeroImage || europeRoadTripBanner;
+  // Utilizing the newly handcrafted European road trip master banner with the Enya X4 Pro guitar
+  const heroImage = enyaHeroBanner;
   
   // Setting the specific images for 'The Geometry of a Song' section
   const [prImages, setPrImages] = useState<string[]>([
