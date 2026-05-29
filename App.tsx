@@ -15,7 +15,7 @@ import { TOUR_DATA } from './constants';
 import { Concert } from './types';
 import { GoogleGenAI } from "@google/genai";
 // @ts-ignore
-import enyaHeroBanner from './src/assets/images/enya_hero_banner_1780056000054.png';
+import enyaHeroBanner from './src/assets/images/enya_perfect_banner_1780057036003.png';
 
 const App: React.FC = () => {
   // Utilizing the newly handcrafted European road trip master banner with the Enya X4 Pro guitar
@@ -142,7 +142,7 @@ const App: React.FC = () => {
       <header className="sticky top-0 left-0 right-0 z-50 bg-[#DBD5CA]/95 backdrop-blur-md px-6 py-6 border-b border-[#260B01]/5 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[#260B01] cursor-pointer flex flex-col items-center md:items-start group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <span className="font-serif text-3xl md:text-4xl font-bold leading-none tracking-tight group-hover:text-[#8D5B2F] transition-all">Ann & McBryan</span>
+            <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold leading-none tracking-tight group-hover:text-[#8D5B2F] transition-all">Ann & McBryan</span>
             <span className="font-vintage text-[9px] tracking-[0.5em] uppercase text-[#8D5B2F] mt-1.5 font-bold opacity-80">Songs Across Europe</span>
           </div>
           <nav className="flex items-center gap-4 md:gap-8 text-[9px] uppercase tracking-[0.3em] font-vintage font-bold text-[#260B01] bg-[#DBD5CA]/50 px-6 py-2.5 rounded-full border border-[#260B01]/5 shadow-sm">
