@@ -77,7 +77,7 @@ export const TOUR_DATA: Concert[] = [
     venue: 'The Beachclub at Schladitzer see - All-on-Sea Camp & Sport Resort',
     address: 'Haynaer Straße 1, 04519 Rackwitz',
     date: 'July 5, 2026',
-    time: 'TBA',
+    time: '15:00',
     status: 'upcoming',
     coordinates: { lat: 51.43685, lng: 12.3427 },
     ticketsUrl: 'https://www.campdavid-sportresort.de/'
