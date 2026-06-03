@@ -88,7 +88,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     // Versioning check to ensure Rackwitz and other updates display correctly
-    const DATA_VERSION = 'v1.40_rackwitz_time_update';
+    const DATA_VERSION = 'v1.42_grenaa_pavillionen_link_addition';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     

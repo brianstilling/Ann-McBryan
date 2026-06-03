@@ -163,5 +163,17 @@ export const TOUR_DATA: Concert[] = [
     status: 'upcoming',
     coordinates: { lat: 51.8105, lng: 5.7228 },
     ticketsUrl: 'https://www.kasteelwijchen.nl/'
+  },
+  {
+    id: 'session-2026-grenaa-pavillionen',
+    city: 'Grenaa, Denmark',
+    country: 'Denmark',
+    venue: 'Pavillionen',
+    address: 'Kærvej 11, 8500 Grenaa, Denmark',
+    date: 'August 28, 2026',
+    time: '20:00 (doors open 19:00)',
+    status: 'upcoming',
+    coordinates: { lat: 56.4116, lng: 10.8718 },
+    ticketsUrl: 'https://www.pavillonen.dk/forside'
   }
 ];
