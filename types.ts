@@ -13,6 +13,7 @@ export interface Concert {
     lng: number;
   };
   ticketsUrl?: string;
+  hidden?: boolean;
 }
 
 export interface BookingRequest {

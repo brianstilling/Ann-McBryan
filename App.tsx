@@ -88,7 +88,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     // Versioning check to ensure Rackwitz and other updates display correctly
-    const DATA_VERSION = 'v1.43_furtwangen_addition';
+    const DATA_VERSION = 'v1.44_hide_furtwangen';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     
@@ -122,6 +122,8 @@ const App: React.FC = () => {
       />
     );
   }
+
+  const visibleSessions = sessions.filter(s => !s.hidden);
 
   return (
     <div className="relative min-h-screen bg-[#DBD5CA] selection:bg-[#8D5B2F] selection:text-white">
@@ -160,10 +162,10 @@ const App: React.FC = () => {
         </div>
         <About prImages={prImages} />
         <Story title={storyTitle} />
-        <ConcertList sessions={sessions} />
-        <TourMap sessions={sessions} />
+        <ConcertList sessions={visibleSessions} />
+        <TourMap sessions={visibleSessions} />
         <VideoSection />
-        <BookingForm sessions={sessions} />
+        <BookingForm sessions={visibleSessions} />
         <WishSongForm />
       </main>
       <Footer />

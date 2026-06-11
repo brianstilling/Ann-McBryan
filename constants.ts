@@ -126,7 +126,8 @@ export const TOUR_DATA: Concert[] = [
     time: 'Between 12:00 - 18:00 (details TBA)',
     status: 'upcoming',
     coordinates: { lat: 48.0503, lng: 8.2045 },
-    ticketsUrl: 'https://www.zumwildenmichel.de/'
+    ticketsUrl: 'https://www.zumwildenmichel.de/',
+    hidden: true
   },
   {
     id: 'session-2026-merl',
