@@ -117,6 +117,18 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://daheim-triberg.de/'
   },
   {
+    id: 'session-2026-furtwangen',
+    city: 'Furtwangen, Germany',
+    country: 'Germany',
+    venue: 'Zum Wilden Michel',
+    address: 'Linach 6, 78120 Furtwangen, Germany',
+    date: 'July 12, 2026',
+    time: 'Between 12:00 - 18:00 (details TBA)',
+    status: 'upcoming',
+    coordinates: { lat: 48.0503, lng: 8.2045 },
+    ticketsUrl: 'https://www.zumwildenmichel.de/'
+  },
+  {
     id: 'session-2026-merl',
     city: 'Mosel, Germany',
     country: 'Germany',
