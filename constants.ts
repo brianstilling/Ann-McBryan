@@ -142,6 +142,17 @@ export const TOUR_DATA: Concert[] = [
     hidden: true
   },
   {
+    id: 'session-2026-geltendorf-private',
+    city: 'Geltendorf, Germany',
+    country: 'Germany',
+    venue: 'Private Event (Kaltenberg)',
+    address: 'Kaltenberg, 82269 Geltendorf, Germany',
+    date: 'July 12, 2026',
+    time: 'TBA',
+    status: 'private',
+    coordinates: { lat: 48.0130, lng: 11.0116 }
+  },
+  {
     id: 'session-2026-merl',
     city: 'Mosel, Germany',
     country: 'Germany',

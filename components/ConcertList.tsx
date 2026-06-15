@@ -95,15 +95,22 @@ const FeaturedSession: React.FC<{ concert: Concert }> = ({ concert }) => (
         </div>
 
         <div className="flex flex-col items-center lg:items-end gap-5 w-full lg:w-auto">
-          <a 
-            href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full lg:w-auto px-10 py-5 bg-[#260B01] hover:bg-[#D4AF37] text-white hover:text-[#260B01] rounded-[1.5rem] font-vintage tracking-[0.4em] text-[10px] uppercase font-bold transition-all duration-500 shadow-xl flex items-center justify-center gap-3 group/btn"
-          >
-            <span>JOIN SESSION</span>
-            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
-          </a>
+          {concert.status !== 'private' ? (
+            <a 
+              href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full lg:w-auto px-10 py-5 bg-[#260B01] hover:bg-[#D4AF37] text-white hover:text-[#260B01] rounded-[1.5rem] font-vintage tracking-[0.4em] text-[10px] uppercase font-bold transition-all duration-500 shadow-xl flex items-center justify-center gap-3 group/btn"
+            >
+              <span>JOIN SESSION</span>
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
+            </a>
+          ) : (
+            <div className="w-full lg:w-auto px-10 py-5 bg-[#939789]/20 text-[#260B01]/70 rounded-[1.5rem] font-vintage tracking-[0.4em] text-[10px] uppercase font-bold flex items-center justify-center gap-3 border border-[#260B01]/5">
+              <Lock className="w-4 h-4 text-[#939789]" />
+              <span>PRIVATE EVENT</span>
+            </div>
+          )}
           <span className="text-[8px] font-bold tracking-[0.4em] uppercase text-[#D4AF37] flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></div>
             {getStatusText(concert.status)}
@@ -147,18 +154,27 @@ const SessionRow: React.FC<{ concert: Concert; index: number }> = ({ concert, in
       </div>
     </div>
     <div className="mt-8 md:mt-0 flex items-center gap-5">
-      <a 
-        href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative px-10 py-4 bg-[#260B01] hover:bg-[#D4AF37] hover:text-[#260B01] text-white font-bold font-vintage tracking-[0.3em] text-[9px] rounded-full transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-xl group/btn"
-      >
-        <span>INFO</span>
-        <Ticket className="w-3.5 h-3.5 group-hover/btn:rotate-12 transition-transform" />
-      </a>
-      <a href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-[#260B01]/5 flex items-center justify-center text-[#260B01]/20 hover:text-[#D4AF37] transition-all">
-        <ExternalLink className="w-4 h-4" />
-      </a>
+      {concert.status !== 'private' ? (
+        <>
+          <a 
+            href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative px-10 py-4 bg-[#260B01] hover:bg-[#D4AF37] hover:text-[#260B01] text-white font-bold font-vintage tracking-[0.3em] text-[9px] rounded-full transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-xl group/btn"
+          >
+            <span>INFO</span>
+            <Ticket className="w-3.5 h-3.5 group-hover/btn:rotate-12 transition-transform" />
+          </a>
+          <a href={concert.ticketsUrl || "https://www.facebook.com/AnnMcBryanDuo"} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-[#260B01]/5 flex items-center justify-center text-[#260B01]/20 hover:text-[#D4AF37] transition-all">
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </>
+      ) : (
+        <div className="px-8 py-3.5 bg-[#939789]/20 text-[#260B01]/70 rounded-full font-bold font-vintage tracking-[0.3em] text-[9px] uppercase flex items-center gap-2 border border-[#260B01]/5">
+          <Lock className="w-3.5 h-3.5 text-[#939789]" />
+          <span>PRIVATE</span>
+        </div>
+      )}
     </div>
   </motion.div>
 );
