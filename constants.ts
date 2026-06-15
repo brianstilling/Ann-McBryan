@@ -189,6 +189,17 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.t-o-m-s.de/'
   },
   {
+    id: 'session-2026-bioul',
+    city: 'Bioul, Belgium',
+    country: 'Belgium',
+    venue: 'Bioul 5537',
+    address: 'Bioul 5537, Belgium (More details TBA)',
+    date: 'July 25, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 50.3323, lng: 4.7981 }
+  },
+  {
     id: 'session-2026-wijchen',
     city: 'Wijchen, The Netherlands',
     country: 'The Netherlands',
