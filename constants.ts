@@ -105,6 +105,18 @@ export const TOUR_DATA: Concert[] = [
     coordinates: { lat: 51.3397, lng: 12.3731 }
   },
   {
+    id: 'session-2026-furtwangen-10',
+    city: 'Furtwangen, Germany',
+    country: 'Germany',
+    venue: 'Zum Wilden Michel',
+    address: 'Linach 6, 78120 Furtwangen, Germany',
+    date: 'July 10, 2026',
+    time: 'Details TBA',
+    status: 'upcoming',
+    coordinates: { lat: 48.0503, lng: 8.2045 },
+    ticketsUrl: 'https://www.zumwildenmichel.de/'
+  },
+  {
     id: 'session-2026-triberg',
     city: 'Triberg, Germany',
     country: 'Germany',
