@@ -212,10 +212,10 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.kasteelwijchen.nl/'
   },
   {
-    id: 'session-2026-grenaa-pavillionen',
+    id: 'session-2026-grenaa-pavillonen',
     city: 'Grenaa, Denmark',
     country: 'Denmark',
-    venue: 'Pavillionen',
+    venue: 'Pavillonen',
     address: 'Kærvej 11, 8500 Grenaa, Denmark',
     date: 'August 28, 2026',
     time: '20:00 (doors open 19:00)',
