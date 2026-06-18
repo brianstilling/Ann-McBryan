@@ -224,6 +224,18 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.pavillonen.dk/forside'
   },
   {
+    id: 'session-2026-stafet-djursland',
+    city: 'Stenvad, Denmark',
+    country: 'Denmark',
+    venue: 'Stafet for Livet Djursland',
+    address: 'Stendyssevej 14, 8586 Stenvad, Denmark',
+    date: 'September 12, 2026',
+    time: '11:00-13:30',
+    status: 'upcoming',
+    coordinates: { lat: 56.4411, lng: 10.6552 },
+    ticketsUrl: 'https://www.cancer.dk/stafetforlivet/stafetter/djursland/'
+  },
+  {
     id: 'session-2026-houlbjerg-kirke',
     city: 'Houlbjerg, Denmark',
     country: 'Denmark',
