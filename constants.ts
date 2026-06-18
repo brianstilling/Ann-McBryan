@@ -222,5 +222,17 @@ export const TOUR_DATA: Concert[] = [
     status: 'upcoming',
     coordinates: { lat: 56.4116, lng: 10.8718 },
     ticketsUrl: 'https://www.pavillonen.dk/forside'
+  },
+  {
+    id: 'session-2026-houlbjerg-kirke',
+    city: 'Houlbjerg, Denmark',
+    country: 'Denmark',
+    venue: 'Houlbjerg Kirke',
+    address: 'Villungsvej 18, Houlbjerg, Langå, Denmark',
+    date: 'September 16, 2026',
+    time: '19:30-20:30',
+    status: 'upcoming',
+    coordinates: { lat: 56.3575, lng: 9.865 },
+    ticketsUrl: 'https://www.kultunaut.dk/perl/arrmore/type-nynaut/type-nynaut?ArrNr=20066825'
   }
 ];

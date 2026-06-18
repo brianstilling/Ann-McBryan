@@ -202,6 +202,18 @@ export const ConcertList: React.FC<ConcertListProps> = ({ sessions }) => {
 
   const [featuredUpcoming, ...otherUpcoming] = upcomingSessions;
 
+  const plannedPathSessions = otherUpcoming.filter(concert => {
+    if (concert.date.toLowerCase().includes('announced')) return true;
+    const concertDate = new Date(concert.date);
+    return concertDate <= new Date('2026-08-31');
+  });
+
+  const otherPlannedSessions = otherUpcoming.filter(concert => {
+    if (concert.date.toLowerCase().includes('announced')) return false;
+    const concertDate = new Date(concert.date);
+    return concertDate > new Date('2026-08-31');
+  });
+
   return (
     <section id="concerts" className="py-24 bg-[#CBB89C] relative overflow-hidden">
       <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-[#D4AF37]/20 to-transparent hidden xl:block"></div>
@@ -231,20 +243,39 @@ export const ConcertList: React.FC<ConcertListProps> = ({ sessions }) => {
         )}
 
         {/* Other Planned Path */}
-        {otherUpcoming.length > 0 && (
+        {plannedPathSessions.length > 0 && (
           <div className="mb-20">
             <div className="flex items-center gap-4 mb-8">
               <Clock className="w-4 h-4 text-[#D4AF37]" />
-              <h3 className="text-xl font-serif text-[#260B01] italic font-bold">Planned Path</h3>
+              <h3 className="text-xl font-serif text-[#260B01] italic font-bold">Planned Path on Songs Across Europe 2026 tour</h3>
               <div className="h-px flex-grow bg-[#260B01]/10"></div>
             </div>
             <div className="space-y-4">
-              {otherUpcoming.map((concert, index) => (
+              {plannedPathSessions.map((concert, index) => (
                 <SessionRow key={concert.id} concert={concert} index={index} />
               ))}
             </div>
           </div>
         )}
+
+        {/* Other planned concerts section */}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+            <h3 className="text-xl font-serif text-[#260B01] italic font-bold">Other planned concerts</h3>
+            <div className="h-px flex-grow bg-[#260B01]/10"></div>
+          </div>
+          <p className="text-[#260B01]/60 italic font-serif text-sm max-w-xl leading-relaxed mb-6">
+            Additional tour sessions and private concerts are currently being organized across Europe. If you have a specific venue in mind or wish to book a session, please fill out the booking request form below.
+          </p>
+          {otherPlannedSessions.length > 0 && (
+            <div className="space-y-4">
+              {otherPlannedSessions.map((concert, index) => (
+                <SessionRow key={concert.id} concert={concert} index={index + 20} />
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Past Sessions */}
         {pastSessions.length > 0 && (
