@@ -94,15 +94,15 @@ export const TOUR_DATA: Concert[] = [
     coordinates: { lat: 51.3397, lng: 12.3731 }
   },
   {
-    id: 'session-2026-leipzig-7',
-    city: 'Leipzig, Germany',
+    id: 'session-2026-rothenburg',
+    city: 'Rothenburg ob der Tauber, Germany',
     country: 'Germany',
     venue: 'To be announced concert',
-    address: 'Leipzig, Germany',
-    date: 'July 7, 2026',
+    address: 'Rothenburg ob der Tauber, Germany',
+    date: 'July 8, 2026',
     time: 'TBA',
     status: 'upcoming',
-    coordinates: { lat: 51.3397, lng: 12.3731 }
+    coordinates: { lat: 49.3775, lng: 10.179 }
   },
   {
     id: 'session-2026-furtwangen-10',
@@ -111,7 +111,7 @@ export const TOUR_DATA: Concert[] = [
     venue: 'Zum Wilden Michel',
     address: 'Linach 6, 78120 Furtwangen, Germany',
     date: 'July 10, 2026',
-    time: 'Details TBA',
+    time: '19:00',
     status: 'upcoming',
     coordinates: { lat: 48.0503, lng: 8.2045 },
     ticketsUrl: 'https://www.zumwildenmichel.de/'
