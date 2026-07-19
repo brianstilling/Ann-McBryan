@@ -171,7 +171,7 @@ export const TOUR_DATA: Concert[] = [
     venue: 'Scheid Wein - Merl an der Mosel',
     address: 'Hauptstraße 50, 56856 Zell (Mosel)',
     date: 'July 19, 2026',
-    time: 'TBA',
+    time: '18:00',
     status: 'upcoming',
     coordinates: { lat: 50.0449, lng: 7.1648 },
     ticketsUrl: 'https://scheid-wein.de/'
@@ -189,15 +189,26 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.t-o-m-s.de/'
   },
   {
-    id: 'session-2026-bioul',
-    city: 'Bioul, Belgium',
-    country: 'Belgium',
-    venue: 'Bioul 5537',
-    address: 'Bioul 5537, Belgium (More details TBA)',
+    id: 'session-2026-amsterdam',
+    city: 'Amsterdam, The Netherlands',
+    country: 'The Netherlands',
+    venue: 'To be announced concert',
+    address: 'Amsterdam, The Netherlands',
     date: 'July 25, 2026',
     time: 'TBA',
     status: 'upcoming',
-    coordinates: { lat: 50.3323, lng: 4.7981 }
+    coordinates: { lat: 52.3676, lng: 4.9041 }
+  },
+  {
+    id: 'session-2026-amsterdam-26',
+    city: 'Amsterdam, The Netherlands',
+    country: 'The Netherlands',
+    venue: 'To be announced concert',
+    address: 'Amsterdam, The Netherlands',
+    date: 'July 26, 2026',
+    time: 'TBA',
+    status: 'upcoming',
+    coordinates: { lat: 52.3676, lng: 4.9041 }
   },
   {
     id: 'session-2026-wijchen',
