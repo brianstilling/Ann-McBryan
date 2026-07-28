@@ -189,26 +189,26 @@ export const TOUR_DATA: Concert[] = [
     ticketsUrl: 'https://www.t-o-m-s.de/'
   },
   {
-    id: 'session-2026-amsterdam',
+    id: 'session-2026-amsterdam-vondelpark',
     city: 'Amsterdam, The Netherlands',
     country: 'The Netherlands',
-    venue: 'To be announced concert',
-    address: 'Amsterdam, The Netherlands',
+    venue: 'Vondelpark',
+    address: 'Vondelpark, 1071 AA Amsterdam, Netherlands',
     date: 'July 25, 2026',
     time: 'TBA',
     status: 'upcoming',
-    coordinates: { lat: 52.3676, lng: 4.9041 }
+    coordinates: { lat: 52.3580, lng: 4.8686 }
   },
   {
-    id: 'session-2026-amsterdam-26',
+    id: 'session-2026-amsterdam-canal-cruise',
     city: 'Amsterdam, The Netherlands',
     country: 'The Netherlands',
-    venue: 'To be announced concert',
-    address: 'Amsterdam, The Netherlands',
-    date: 'July 26, 2026',
+    venue: 'Canal Cruise Boat with Captain Joe',
+    address: 'Prins Hendrikkade 33A, 1012 AB Amsterdam, Netherlands',
+    date: 'July 25, 2026',
     time: 'TBA',
     status: 'upcoming',
-    coordinates: { lat: 52.3676, lng: 4.9041 }
+    coordinates: { lat: 52.3768, lng: 4.9015 }
   },
   {
     id: 'session-2026-wijchen',
