@@ -35,11 +35,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
 
   const julyDays = Array.from({ length: 31 }, (_, i) => i + 1);
 
-  // Get booked days from sessions in July 2026
+  // Get booked days from sessions in July 2027 (all currently free)
   const bookedDays = sessions
     .filter(concert => {
       const dateStr = concert.date.toLowerCase();
-      return dateStr.includes('july') && dateStr.includes('2026');
+      return dateStr.includes('july') && dateStr.includes('2027');
     })
     .map(concert => {
       const parts = concert.date.split(' ');
@@ -62,8 +62,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
 
     try {
       const dateString = String(selectedDates.length > 0 
-        ? `Proposed dates in July 2026: ${selectedDates.map(d => `July ${d}`).join(', ')}`
-        : 'Open to various dates in July 2026');
+        ? `Proposed dates in July 2027: ${selectedDates.map(d => `July ${d}, 2027`).join(', ')}`
+        : 'Open to various dates in July 2027');
 
       let bodyContent = String(formData.message);
       try {
@@ -103,7 +103,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
         originalMessage: String(formData.message),
         aiPolishedLetter: String(bodyContent),
         selectedDates: String(dateString),
-        _subject: String(`Songs Across Europe 2026 request: ${formData.location}, ${formData.country} (${formData.name})`)
+        _subject: String(`Songs Across Europe 2027 request: ${formData.location}, ${formData.country} (${formData.name})`)
       };
 
       const response = await fetch(formspreeEndpoint, {
@@ -122,7 +122,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
       }
     } catch (error) {
       console.error("Submission error:", error);
-      const mailtoUrl = `mailto:annmcbryan@gmail.com?subject=Songs Across Europe 2026 request&body=${encodeURIComponent(`Name: ${formData.name}\nCountry: ${formData.country}\nLocation: ${formData.location}\nAddress: ${formData.address}\n\n${formData.message}`)}`;
+      const mailtoUrl = `mailto:annmcbryan@gmail.com?subject=Songs Across Europe 2027 request&body=${encodeURIComponent(`Name: ${formData.name}\nCountry: ${formData.country}\nLocation: ${formData.location}\nAddress: ${formData.address}\nProposed July 2027 Dates: ${selectedDates.length > 0 ? selectedDates.map(d => `July ${d}, 2027`).join(', ') : 'Flexible in July 2027'}\n\n${formData.message}`)}`;
       window.location.href = mailtoUrl;
       setStatus('sent');
     }
@@ -184,10 +184,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
                     <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
                       <div className="flex items-center gap-3 mb-4 text-[#8D5B2F]">
                         <CalendarIcon className="w-4 h-4" />
-                        <span className="text-[10px] uppercase tracking-[0.4em] font-bold font-vintage">July 2026 Windows</span>
+                        <span className="text-[10px] uppercase tracking-[0.4em] font-bold font-vintage">July 2027 Calendar</span>
                       </div>
                       <p className="text-xs text-white/40 leading-relaxed italic">
-                        Select dates from the grid to indicate when your space is available for a session.
+                        All dates in July 2027 are completely open for stop requests. Select your preferred date(s) from the calendar to invite us to your space.
                       </p>
                     </div>
                   </div>
@@ -266,15 +266,18 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
                     </div>
 
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <label className="text-[9px] uppercase tracking-[0.4em] text-[#8D5B2F] font-bold block">Proposed July 2026 Dates</label>
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <label className="text-[9px] uppercase tracking-[0.4em] text-[#8D5B2F] font-bold block">Proposed July 2027 Dates</label>
+                          <span className="text-[9px] text-[#260B01]/50 font-serif italic">All dates are free & open for 2027 requests</span>
+                        </div>
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-[#8D5B2F]/20 border border-[#8D5B2F]/30"></div>
-                            <span className="text-[8px] font-vintage tracking-widest text-[#260B01]/40 uppercase font-bold">Booked</span>
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#8D5B2F]/15 border border-[#8D5B2F]/40"></div>
+                            <span className="text-[8px] font-vintage tracking-widest text-[#260B01]/50 uppercase font-bold">Open</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-[#8D5B2F]"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#8D5B2F]"></div>
                             <span className="text-[8px] font-vintage tracking-widest text-[#8D5B2F] uppercase font-bold">Selected</span>
                           </div>
                         </div>
@@ -282,9 +285,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
 
                       <div className="grid grid-cols-7 gap-1 md:gap-2">
                         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
-                          <div key={`${d}-${i}`} className="text-[8px] text-center font-bold text-[#260B01]/20 pb-1">{d}</div>
+                          <div key={`${d}-${i}`} className="text-[8px] text-center font-bold text-[#260B01]/30 pb-1">{d}</div>
                         ))}
-                        {[null, null, null].map((_, i) => <div key={`o-${i}`}></div>)}
+                        {/* July 1, 2027 begins on Thursday (offset = 4 days) */}
+                        {[null, null, null, null].map((_, i) => <div key={`offset-2027-${i}`}></div>)}
                         {julyDays.map(day => {
                           const isBooked = bookedDays.includes(day);
                           const isSelected = selectedDates.includes(day);
@@ -300,8 +304,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
                                 ${isBooked 
                                   ? 'bg-[#8D5B2F]/5 text-[#260B01]/20 border-[#260B01]/5 cursor-not-allowed' 
                                   : isSelected 
-                                    ? 'bg-[#8D5B2F] text-white border-[#8D5B2F] shadow-lg' 
-                                    : 'bg-transparent text-[#260B01] border-transparent hover:border-[#8D5B2F]/30'}
+                                    ? 'bg-[#8D5B2F] text-white border-[#8D5B2F] shadow-lg scale-105' 
+                                    : 'bg-[#8D5B2F]/5 text-[#260B01] border-[#260B01]/5 hover:border-[#8D5B2F] hover:bg-[#8D5B2F]/10'}
                               `}
                             >
                               {day}
@@ -317,12 +321,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({ sessions }) => {
                       <div className="min-h-[20px]">
                         {selectedDates.length > 0 && (
                           <span className="text-[9px] text-[#8D5B2F] font-bold uppercase tracking-widest italic">
-                            {selectedDates.map(d => `July ${d}`).join(', ')}
+                            Selected: {selectedDates.map(d => `July ${d}, 2027`).join(', ')}
                           </span>
                         )}
                         {selectedDates.length === 0 && (
-                          <span className="text-[9px] text-[#260B01]/30 font-bold uppercase tracking-widest italic">
-                            No dates selected yet
+                          <span className="text-[9px] text-[#260B01]/40 font-bold uppercase tracking-widest italic">
+                            Click any date in July 2027 to select your preferred concert day(s)
                           </span>
                         )}
                       </div>

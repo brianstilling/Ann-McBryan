@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
+import { TourUpdate } from './components/TourUpdate';
 import { ConcertList } from './components/ConcertList';
 import { TourMap } from './components/TourMap';
 import { VideoSection } from './components/VideoSection';
@@ -88,7 +89,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     // Versioning check to ensure Rackwitz and other updates display correctly
-    const DATA_VERSION = 'v1.56_amsterdam_vondelpark_canal_cruise';
+    const DATA_VERSION = 'v1.57_july_2027_booking_calendar';
     const savedVersion = localStorage.getItem('ann_mcbryan_data_ver');
     const savedSessions = localStorage.getItem('ann_mcbryan_sessions');
     
@@ -147,7 +148,8 @@ const App: React.FC = () => {
             <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold leading-none tracking-tight group-hover:text-[#8D5B2F] transition-all">Ann & McBryan</span>
             <span className="font-vintage text-[9px] tracking-[0.5em] uppercase text-[#8D5B2F] mt-1.5 font-bold opacity-80">Songs Across Europe</span>
           </div>
-          <nav className="flex items-center gap-4 md:gap-8 text-[9px] uppercase tracking-[0.3em] font-vintage font-bold text-[#260B01] bg-[#DBD5CA]/50 px-6 py-2.5 rounded-full border border-[#260B01]/5 shadow-sm">
+          <nav className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-[9px] uppercase tracking-[0.3em] font-vintage font-bold text-[#260B01] bg-[#DBD5CA]/50 px-6 py-2.5 rounded-full border border-[#260B01]/5 shadow-sm">
+            <button onClick={() => scrollToSection('tour-update')} className="hover:text-[#8D5B2F] transition-colors relative group">Tour Update & 2027</button>
             <button onClick={() => scrollToSection('about')} className="hover:text-[#8D5B2F] transition-colors relative group">The Chronicles</button>
             <button onClick={() => scrollToSection('wishlist')} className="hover:text-[#8D5B2F] transition-colors relative group">Request Session</button>
             <button onClick={() => scrollToSection('song-wish')} className="hover:text-[#8D5B2F] transition-colors relative group">Wish a Song</button>
@@ -160,6 +162,7 @@ const App: React.FC = () => {
         <div className="mt-8 md:mt-12 px-6 max-w-7xl mx-auto">
           <Hero backgroundImage={heroImage} />
         </div>
+        <TourUpdate />
         <About prImages={prImages} />
         <Story title={storyTitle} />
         <ConcertList sessions={visibleSessions} />

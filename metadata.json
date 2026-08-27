@@ -1,5 +1,6 @@
 {
   "name": "Ann and McBryan Songs Across Europe",
-  "description": "A visually stunning tour platform for the acoustic duo Ann & McBryan, featuring concert listings and booking requests.",
-  "requestFramePermissions": []
+  "description": "Tour platform and odyssey for acoustic duo Ann & McBryan, featuring 2026 tour updates, 2027 Scotland tour news, concert listings, and booking requests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
