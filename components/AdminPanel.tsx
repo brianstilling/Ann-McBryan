@@ -280,7 +280,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
                     { id: 'img-4879', name: 'IMG_4879.jpg', label: 'Acoustic Live in the Park' },
                     { id: 'img-8193', name: 'IMG_8193.jpg', label: 'Guitar on the Move' },
                     { id: 'img-8659', name: 'IMG_8659.jpg', label: 'Canal Sunlight' },
-                    { id: 'img-8641', name: 'IMG_8641.jpg', label: 'Half-Timbered Village' },
+                    { id: 'img-8641', name: 'IMG_8641.jpg', label: "Tom's Musik-keller" },
                     { id: 'img-8203', name: 'IMG_8203.jpg', label: 'Thomann Music Stop' },
                   ].map((photo) => (
                     <div key={photo.id} className="p-4 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between gap-3">

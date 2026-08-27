@@ -50,8 +50,8 @@ const CHRONICLE_PHOTOS: ChroniclePhoto[] = [
     fallbackSrc: '/IMG_8193.jpg',
     filename: 'IMG_8193.jpg',
     title: 'Guitar on the Move',
-    location: 'European City Streets',
-    caption: 'Walking cobblestone streets with flight case in hand toward the next venue.'
+    location: 'Leipzig, Germany',
+    caption: 'Walking cobblestone streets with flight case in hand toward the next venue in Leipzig.'
   },
   {
     id: 'img-8659',
@@ -67,9 +67,9 @@ const CHRONICLE_PHOTOS: ChroniclePhoto[] = [
     src: img8641,
     fallbackSrc: '/IMG_8641.jpg',
     filename: 'IMG_8641.jpg',
-    title: 'Half-Timbered Village',
-    location: 'Historic Village, Germany',
-    caption: 'Touring through historic half-timbered architecture on the southern route.'
+    title: "Tom's Musik-keller",
+    location: 'Einkirch, Germany',
+    caption: "Outside Tom's Musik-keller in Einkirch, Germany on the European tour route."
   },
   {
     id: 'img-8203',
@@ -140,8 +140,8 @@ export const About: React.FC<AboutProps> = () => {
                       {photos[selectedPhotoIndex].location}
                     </p>
                   </div>
-                  <span className="text-[10px] font-mono text-[#260B01]/60 bg-[#DBD5CA]/60 px-3 py-1.5 rounded-lg font-semibold">
-                    {photos[selectedPhotoIndex].filename}
+                  <span className="text-[10px] font-vintage tracking-widest text-[#260B01]/50 uppercase bg-[#DBD5CA]/60 px-3 py-1.5 rounded-lg font-medium">
+                    {selectedPhotoIndex + 1} / {photos.length}
                   </span>
                 </div>
               </motion.div>
@@ -168,9 +168,9 @@ export const About: React.FC<AboutProps> = () => {
                           className="w-full h-full object-cover block hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <div className="mt-2 px-1 flex items-center justify-between">
+                      <div className="mt-2 px-1">
                         <p className="text-xs font-serif font-bold text-[#260B01] truncate">{item.title}</p>
-                        <p className="text-[9px] font-mono text-[#8D5B2F] truncate">{item.filename}</p>
+                        <p className="text-[10px] text-[#8D5B2F] font-vintage uppercase tracking-wider truncate">{item.location}</p>
                       </div>
                     </div>
                   );
@@ -201,7 +201,7 @@ export const About: React.FC<AboutProps> = () => {
                             ? 'border-[#8D5B2F] ring-2 ring-[#8D5B2F]/40 scale-105 shadow' 
                             : 'border-transparent opacity-75 hover:opacity-100'
                         }`}
-                        title={`${p.title} (${p.filename})`}
+                        title={p.title}
                       >
                         <img 
                           src={p.src} 
