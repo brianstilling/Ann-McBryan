@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Heart, Compass, Mail, Mountain, Music, ArrowRight, CheckCircle2 } from 'lucide-react';
 // @ts-ignore
-import bundledTourPhoto from '../src/assets/images/IMG_8658.jpg';
+import tourPhoto from '../src/assets/images/IMG_8658.jpg';
 
 export const TourUpdate: React.FC = () => {
-  const [photoSrc, setPhotoSrc] = useState<string>(() => {
-    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || bundledTourPhoto;
-  });
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const stored = localStorage.getItem('ann_mcbryan_tour_2026_photo');
-      if (stored) {
-        setPhotoSrc(stored);
-      }
-    };
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
-
   const scrollToWishlist = () => {
     const el = document.getElementById('wishlist');
     if (el) {
@@ -102,12 +87,9 @@ export const TourUpdate: React.FC = () => {
                   <div className="relative p-2.5 sm:p-3 bg-[#DBD5CA]/70 rounded-3xl border border-[#8D5B2F]/20 shadow-md">
                     <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden relative">
                       <img
-                        src={photoSrc}
+                        src={tourPhoto}
                         onError={(e) => {
-                          // Fallback to bundled asset if path fails
-                          if (photoSrc !== bundledTourPhoto) {
-                            setPhotoSrc(bundledTourPhoto);
-                          }
+                          (e.currentTarget as HTMLImageElement).src = '/IMG_8658.jpg';
                         }}
                         alt="Ann & McBryan on Songs Across Europe Tour 2026"
                         referrerPolicy="no-referrer"
