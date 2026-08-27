@@ -6,7 +6,7 @@ import bundledTourPhoto from '../src/assets/images/IMG_8658.jpg';
 
 export const TourUpdate: React.FC = () => {
   const [photoSrc, setPhotoSrc] = useState<string>(() => {
-    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || '/IMG_8658.jpg' || bundledTourPhoto;
+    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || bundledTourPhoto;
   });
 
   useEffect(() => {
