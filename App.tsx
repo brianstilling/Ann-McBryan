@@ -13,20 +13,11 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Compass } from 'lucide-react';
 import { TOUR_DATA } from './constants';
 import { Concert } from './types';
-import { GoogleGenAI } from "@google/genai";
 // @ts-ignore
 import enyaHeroBanner from './src/assets/images/enya_perfect_banner_1780057036003.png';
 
 const App: React.FC = () => {
-  // Utilizing the newly handcrafted European road trip master banner with the Enya X4 Pro guitar
   const heroImage = enyaHeroBanner;
-  
-  // Setting the specific images for 'The Geometry of a Song' section
-  const [prImages, setPrImages] = useState<string[]>([
-    "https://lh3.googleusercontent.com/d/1qKjfjRaT30H2DHq9Jr5vk0s_jZRdj4n6",
-    "https://lh3.googleusercontent.com/d/1sgAVbXWHbLXav_svAsE_SWE2nrIhwwc2",
-    "https://lh3.googleusercontent.com/d/16koF1cw-DfwJF4A1J6qxGzbbBVTXFGXt"
-  ]);
   
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(window.location.hash === '#admin');
@@ -44,42 +35,6 @@ const App: React.FC = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const generatePrAssets = async (force = false) => {
-    const STORAGE_KEY = 'ann_mcbryan_pr_v12_format_fix';
-    const savedPrImages = localStorage.getItem(STORAGE_KEY);
-    
-    // Only use saved images if they were manually forced/regenerated via Admin
-    if (savedPrImages && !force) {
-      setPrImages(JSON.parse(savedPrImages));
-      return;
-    }
-
-    // AI Generation only occurs if 'force' is triggered from AdminPanel
-    if (force) {
-      try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-        const prompt1 = 'A high-end portrait of Ann & McBryan in a cozy European studio. Warm cinematic lighting, editorial photography.';
-        const response = await ai.models.generateContent({ 
-          model: 'gemini-2.5-flash-image', 
-          contents: { parts: [{ text: prompt1 }] } 
-        });
-
-        if (response.candidates?.[0]?.content?.parts) {
-          for (const part of response.candidates[0].content.parts) {
-            if (part.inlineData) {
-              const img = `data:image/png;base64,${part.inlineData.data}`;
-              setPrImages([img]);
-              localStorage.setItem(STORAGE_KEY, JSON.stringify([img]));
-              return;
-            }
-          }
-        }
-      } catch (err) {
-        console.warn("AI asset generation failed, sticking to official assets.");
-      }
     }
   };
 
@@ -102,9 +57,6 @@ const App: React.FC = () => {
     
     const savedStory = localStorage.getItem('ann_mcbryan_story_title');
     if (savedStory) setStoryTitle(savedStory);
-
-    // Checks for storage overrides but defaults to the useState initial array
-    generatePrAssets();
     
     setTimeout(() => setIsLoading(false), 1500);
 
@@ -118,7 +70,6 @@ const App: React.FC = () => {
         setSessions={setSessions} 
         storyTitle={storyTitle} 
         setStoryTitle={setStoryTitle}
-        onRegenerateImages={() => generatePrAssets(true)}
       />
     );
   }
@@ -162,7 +113,7 @@ const App: React.FC = () => {
           <Hero backgroundImage={heroImage} />
         </div>
         <TourUpdate />
-        <About prImages={prImages} />
+        <About />
         <Story title={storyTitle} />
         <ConcertList sessions={visibleSessions} />
         <VideoSection />

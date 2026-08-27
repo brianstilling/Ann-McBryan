@@ -12,7 +12,7 @@ interface AdminPanelProps {
   setSessions: React.Dispatch<React.SetStateAction<Concert[]>>;
   storyTitle: string;
   setStoryTitle: React.Dispatch<React.SetStateAction<string>>;
-  onRegenerateImages: () => void;
+  onRegenerateImages?: () => void;
 }
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, storyTitle, setStoryTitle, onRegenerateImages }) => {
@@ -75,7 +75,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
   };
 
   const handleRegen = () => {
-    onRegenerateImages();
+    onRegenerateImages?.();
     setRegenFeedback(true);
     setTimeout(() => setRegenFeedback(false), 3000);
   };
@@ -228,19 +228,26 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
           )}
 
           {activeTab === 'assets' && (
-            <motion.div key="assets" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-4xl space-y-12 bg-white p-16 rounded-[3rem] shadow-xl border border-[#260B01]/5 text-center">
-              <div className="w-20 h-20 bg-[#8D5B2F]/10 rounded-full flex items-center justify-center mx-auto mb-8">
-                <Camera className="w-10 h-10 text-[#8D5B2F]" />
+            <motion.div key="assets" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-4xl space-y-12 bg-white p-12 sm:p-16 rounded-[3rem] shadow-xl border border-[#260B01]/5">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-[#8D5B2F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Camera className="w-8 h-8 text-[#8D5B2F]" />
+                </div>
+                <h3 className="text-3xl font-serif font-bold italic mb-3">Authentic Photo Asset Manager</h3>
+                <p className="text-[#260B01]/60 text-base font-serif italic leading-relaxed max-w-2xl mx-auto mb-8">
+                  Upload your original camera photos (PNG/JPG) with 100% untouched fidelity. Zero artificial modifications or filters.
+                </p>
               </div>
-              <h3 className="text-3xl font-serif font-bold italic mb-4">Tour 2026 Retrospective Photo</h3>
-              <p className="text-[#260B01]/60 text-base font-serif italic leading-relaxed mb-8 max-w-2xl mx-auto">
-                Upload your exact original photo (e.g. IMG_8658.jpg) with zero alterations or filters. It will immediately appear on the "Thank You for a Fantastic Songs Across Europe 2026" card.
-              </p>
 
-              <div className="p-8 border-2 border-dashed border-[#8D5B2F]/30 rounded-3xl bg-[#8D5B2F]/5 flex flex-col items-center gap-4">
-                <label className="cursor-pointer px-10 py-5 bg-[#260B01] text-white rounded-full font-vintage tracking-[0.3em] text-[11px] uppercase font-bold flex items-center gap-3 hover:bg-[#8D5B2F] transition-all shadow-lg">
-                  <Camera className="w-4 h-4" />
-                  <span>Select & Upload Original Photo File</span>
+              {/* Tour 2026 Retrospective Photo */}
+              <div className="p-8 rounded-3xl bg-[#DBD5CA]/30 border border-[#8D5B2F]/20 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <h4 className="text-lg font-serif font-bold text-[#260B01]">Tour Update Retrospective Photo</h4>
+                  <p className="text-xs text-[#8D5B2F] font-mono mt-1">Target: IMG_8658.jpg (Tour 2026 Gratitude Card)</p>
+                </div>
+                <label className="cursor-pointer px-6 py-3 bg-[#260B01] text-white hover:bg-[#8D5B2F] rounded-full font-vintage tracking-wider text-[10px] uppercase font-bold flex items-center gap-2 shadow-md transition-all">
+                  <Camera className="w-3.5 h-3.5" />
+                  <span>Upload IMG_8658</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -253,8 +260,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
                           const result = event.target?.result as string;
                           if (result) {
                             localStorage.setItem('ann_mcbryan_tour_2026_photo', result);
-                            alert('Original photo updated successfully!');
-                            window.location.hash = '#tour-update';
+                            alert('IMG_8658 updated successfully!');
+                            window.location.reload();
                           }
                         };
                         reader.readAsDataURL(file);
@@ -262,7 +269,51 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
                     }}
                   />
                 </label>
-                <span className="text-[10px] font-vintage uppercase tracking-widest text-[#260B01]/40">Preserves 100% original image fidelity</span>
+              </div>
+
+              {/* Chronicle Photos Grid */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-vintage uppercase tracking-widest font-bold text-[#8D5B2F]">The Chronicles — 6 Tour Photos</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { id: 'img-8652', name: 'IMG_8652.jpg', label: 'Vondelpark Gate' },
+                    { id: 'img-4879', name: 'IMG_4879.jpg', label: 'Acoustic Live in the Park' },
+                    { id: 'img-8193', name: 'IMG_8193.jpg', label: 'Guitar on the Move' },
+                    { id: 'img-8659', name: 'IMG_8659.jpg', label: 'Canal Sunlight' },
+                    { id: 'img-8641', name: 'IMG_8641.jpg', label: 'Half-Timbered Village' },
+                    { id: 'img-8203', name: 'IMG_8203.jpg', label: 'Thomann Music Stop' },
+                  ].map((photo) => (
+                    <div key={photo.id} className="p-4 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-serif font-bold text-[#260B01]">{photo.label}</p>
+                        <p className="text-[10px] font-mono text-[#8D5B2F]">{photo.name}</p>
+                      </div>
+                      <label className="cursor-pointer px-4 py-2 bg-white hover:bg-[#8D5B2F] hover:text-white text-[#260B01] border border-stone-300 rounded-xl font-vintage text-[9px] uppercase tracking-wider font-bold transition-all shadow-sm">
+                        <span>Upload</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onload = (event) => {
+                                const result = event.target?.result as string;
+                                if (result) {
+                                  localStorage.setItem(`ann_mcbryan_photo_${photo.id}`, result);
+                                  alert(`${photo.name} updated successfully!`);
+                                  window.location.reload();
+                                }
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                        />
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}

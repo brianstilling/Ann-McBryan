@@ -5,6 +5,15 @@ import { Sparkles, Heart, Compass, Mail, Mountain, Music, ArrowRight, CheckCircl
 import tourPhoto from '../src/assets/images/IMG_8658.jpg';
 
 export const TourUpdate: React.FC = () => {
+  const [activePhoto, setActivePhoto] = React.useState<string>(tourPhoto);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('ann_mcbryan_tour_2026_photo');
+    if (saved) {
+      setActivePhoto(saved);
+    }
+  }, []);
+
   const scrollToWishlist = () => {
     const el = document.getElementById('wishlist');
     if (el) {
@@ -87,7 +96,7 @@ export const TourUpdate: React.FC = () => {
                   <div className="relative p-2.5 sm:p-3 bg-[#DBD5CA]/70 rounded-3xl border border-[#8D5B2F]/20 shadow-md">
                     <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden relative">
                       <img
-                        src={tourPhoto}
+                        src={activePhoto}
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src = '/IMG_8658.jpg';
                         }}
