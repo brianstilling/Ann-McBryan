@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Heart, Compass, Mail, Mountain, Music, ArrowRight, CheckCircle2 } from 'lucide-react';
 // @ts-ignore
-import defaultTourPhoto from '../src/assets/images/tour_duo_sunset_1787818730824.jpg';
+import bundledTourPhoto from '../src/assets/images/IMG_8658.jpg';
 
 export const TourUpdate: React.FC = () => {
-  const [photoSrc] = useState<string>(() => {
-    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || defaultTourPhoto;
+  const [photoSrc, setPhotoSrc] = useState<string>(() => {
+    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || '/IMG_8658.jpg' || bundledTourPhoto;
   });
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const stored = localStorage.getItem('ann_mcbryan_tour_2026_photo');
+      if (stored) {
+        setPhotoSrc(stored);
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   const scrollToWishlist = () => {
     const el = document.getElementById('wishlist');
@@ -86,12 +97,18 @@ export const TourUpdate: React.FC = () => {
 
               {/* Editorial grid with photo and text */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 items-start mb-8">
-                {/* Vintage framed duo photo */}
+                {/* Pure unadulterated photo frame */}
                 <div className="sm:col-span-5 order-first sm:order-last">
                   <div className="relative p-2.5 sm:p-3 bg-[#DBD5CA]/70 rounded-3xl border border-[#8D5B2F]/20 shadow-md">
-                    <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden relative shadow-inner bg-[#260B01]/10">
+                    <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden relative">
                       <img
                         src={photoSrc}
+                        onError={(e) => {
+                          // Fallback to bundled asset if path fails
+                          if (photoSrc !== bundledTourPhoto) {
+                            setPhotoSrc(bundledTourPhoto);
+                          }
+                        }}
                         alt="Ann & McBryan on Songs Across Europe Tour 2026"
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
