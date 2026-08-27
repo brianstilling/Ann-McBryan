@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { TourUpdate } from './components/TourUpdate';
 import { ConcertList } from './components/ConcertList';
-import { TourMap } from './components/TourMap';
 import { VideoSection } from './components/VideoSection';
 import { BookingForm } from './components/BookingForm';
 import { WishSongForm } from './components/WishSongForm';
@@ -166,7 +165,6 @@ const App: React.FC = () => {
         <About prImages={prImages} />
         <Story title={storyTitle} />
         <ConcertList sessions={visibleSessions} />
-        <TourMap sessions={visibleSessions} />
         <VideoSection />
         <BookingForm sessions={visibleSessions} />
         <WishSongForm />

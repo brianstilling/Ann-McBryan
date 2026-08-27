@@ -232,23 +232,38 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ sessions, setSessions, s
               <div className="w-20 h-20 bg-[#8D5B2F]/10 rounded-full flex items-center justify-center mx-auto mb-8">
                 <Camera className="w-10 h-10 text-[#8D5B2F]" />
               </div>
-              <h3 className="text-3xl font-serif font-bold italic mb-6">Process Likeness Assets</h3>
-              <p className="text-[#260B01]/60 text-lg font-serif italic leading-relaxed mb-12 max-w-2xl mx-auto">
-                "Our current PR portraits are generated based on specific physical markers from your snapshots (Ann's strawberry curls, McBryan's mohawk and glasses). Trigger a re-process to update these assets with professional filters."
+              <h3 className="text-3xl font-serif font-bold italic mb-4">Tour 2026 Retrospective Photo</h3>
+              <p className="text-[#260B01]/60 text-base font-serif italic leading-relaxed mb-8 max-w-2xl mx-auto">
+                Upload your exact original photo (e.g. IMG_8658.jpg) with zero alterations or filters. It will immediately appear on the "Thank You for a Fantastic Songs Across Europe 2026" card.
               </p>
-              
-              <div className="p-10 border-2 border-dashed border-[#8D5B2F]/20 rounded-3xl bg-[#8D5B2F]/5">
-                <button 
-                  onClick={handleRegen}
-                  className="px-16 py-6 bg-[#260B01] text-white rounded-full font-vintage tracking-[0.4em] text-[12px] uppercase font-bold flex items-center gap-4 mx-auto hover:bg-[#8D5B2F] transition-all shadow-xl group"
-                >
-                  {regenFeedback ? <Check className="w-5 h-5" /> : <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />}
-                  {regenFeedback ? 'Re-processed Likeness' : 'RE-GENERATE PR IMAGES'}
-                </button>
+
+              <div className="p-8 border-2 border-dashed border-[#8D5B2F]/30 rounded-3xl bg-[#8D5B2F]/5 flex flex-col items-center gap-4">
+                <label className="cursor-pointer px-10 py-5 bg-[#260B01] text-white rounded-full font-vintage tracking-[0.3em] text-[11px] uppercase font-bold flex items-center gap-3 hover:bg-[#8D5B2F] transition-all shadow-lg">
+                  <Camera className="w-4 h-4" />
+                  <span>Select & Upload Original Photo File</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const result = event.target?.result as string;
+                          if (result) {
+                            localStorage.setItem('ann_mcbryan_tour_2026_photo', result);
+                            alert('Original photo updated successfully!');
+                            window.location.hash = '#tour-update';
+                          }
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                </label>
+                <span className="text-[10px] font-vintage uppercase tracking-widest text-[#260B01]/40">Preserves 100% original image fidelity</span>
               </div>
-              <p className="text-[10px] text-[#260B01]/30 font-serif italic mt-6">
-                *Uses Gemini 2.5 Flash Image to replace screenshot backgrounds with professional studio environments.
-              </p>
             </motion.div>
           )}
 

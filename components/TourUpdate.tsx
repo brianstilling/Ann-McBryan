@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Heart, Compass, Mail, Send, Mountain, Music, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Heart, Compass, Mail, Mountain, Music, ArrowRight, CheckCircle2 } from 'lucide-react';
+// @ts-ignore
+import defaultTourPhoto from '../src/assets/images/tour_duo_sunset_1787818730824.jpg';
 
 export const TourUpdate: React.FC = () => {
+  const [photoSrc] = useState<string>(() => {
+    return localStorage.getItem('ann_mcbryan_tour_2026_photo') || defaultTourPhoto;
+  });
+
   const scrollToWishlist = () => {
     const el = document.getElementById('wishlist');
     if (el) {
@@ -52,16 +58,16 @@ export const TourUpdate: React.FC = () => {
         </div>
 
         {/* Two Editorial Feature Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
-          {/* Card 1: 2026 Thank You & Reflections */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 items-stretch">
+          {/* Card 1: 2026 Thank You & Reflections with Tour Photo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 bg-white/70 backdrop-blur-sm rounded-[2.5rem] p-8 md:p-12 border border-[#260B01]/10 shadow-[0_20px_50px_-20px_rgba(38,11,1,0.08)] flex flex-col justify-between relative overflow-hidden group hover:shadow-[0_30px_60px_-15px_rgba(38,11,1,0.14)] transition-all duration-500"
+            className="lg:col-span-7 bg-white/75 backdrop-blur-sm rounded-[2.5rem] p-8 md:p-12 border border-[#260B01]/10 shadow-[0_20px_50px_-20px_rgba(38,11,1,0.08)] flex flex-col justify-between relative overflow-hidden group hover:shadow-[0_30px_60px_-15px_rgba(38,11,1,0.14)] transition-all duration-500"
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-[#8D5B2F]/5 rounded-bl-[4rem] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#8D5B2F]/5 rounded-bl-[5rem] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-700" />
             
             <div className="relative z-10">
               <div className="flex items-center justify-between gap-4 mb-8">
@@ -73,21 +79,42 @@ export const TourUpdate: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#260B01] font-bold mb-6 leading-snug">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#260B01] font-bold mb-6 leading-snug">
                 Thank You for a Fantastic <br />
                 <span className="italic font-normal text-[#8D5B2F]">Songs Across Europe 2026</span>
               </h3>
 
-              <div className="space-y-4 text-[#260B01]/75 font-serif text-lg leading-relaxed mb-8">
-                <p>
-                  To every host who opened their home, every listener who shared an evening under the summer stars, and everyone who welcomed us along the way — <strong className="text-[#260B01] font-semibold">thank you from the bottom of our hearts.</strong>
-                </p>
-                <p className="italic border-l-2 border-[#8D5B2F]/40 pl-4 text-[#260B01]/85">
-                  The Songs Across Europe Tour 2026 lived fully and deeply up to our every expectation. The warmth, the intimacy of acoustic chords in historic plazas, living rooms, vineyards, and canals reminded us why we play.
-                </p>
-                <p>
-                  It was an adventure that touched our souls — and one that makes us want to pack the Black Berlingo and do even more!
-                </p>
+              {/* Editorial grid with photo and text */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 items-start mb-8">
+                {/* Vintage framed duo photo */}
+                <div className="sm:col-span-5 order-first sm:order-last">
+                  <div className="relative p-2.5 sm:p-3 bg-[#DBD5CA]/70 rounded-3xl border border-[#8D5B2F]/20 shadow-md">
+                    <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden relative shadow-inner bg-[#260B01]/10">
+                      <img
+                        src={photoSrc}
+                        alt="Ann & McBryan on Songs Across Europe Tour 2026"
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="text-center pt-2.5 pb-1">
+                      <span className="font-serif italic text-[12px] text-[#260B01]/75 font-semibold">Tour Moments 2026</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Narrative text */}
+                <div className="sm:col-span-7 space-y-4 text-[#260B01]/75 font-serif text-base sm:text-lg leading-relaxed">
+                  <p>
+                    To every host who opened their home, every listener who shared an evening under the summer stars, and everyone who welcomed us along the way — <strong className="text-[#260B01] font-semibold">thank you from the bottom of our hearts.</strong>
+                  </p>
+                  <p className="italic border-l-2 border-[#8D5B2F]/40 pl-3.5 text-[#260B01]/85">
+                    The Songs Across Europe Tour 2026 lived fully and deeply up to our every expectation. The warmth, the intimacy of acoustic chords in historic plazas, living rooms, vineyards, and canals reminded us why we play.
+                  </p>
+                  <p>
+                    It was an adventure that touched our souls — and one that makes us want to pack the Black Berlingo and do even more!
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -103,7 +130,7 @@ export const TourUpdate: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 bg-[#260B01] text-[#DBD5CA] rounded-[2.5rem] p-8 md:p-12 border border-[#8D5B2F]/20 shadow-[0_30px_70px_-20px_rgba(38,11,1,0.3)] flex flex-col justify-between relative overflow-hidden group"
+            className="lg:col-span-5 bg-[#260B01] text-[#DBD5CA] rounded-[2.5rem] p-8 md:p-12 border border-[#8D5B2F]/20 shadow-[0_30px_70px_-20px_rgba(38,11,1,0.3)] flex flex-col justify-between relative overflow-hidden group"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#8D5B2F]/15 via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#8D5B2F]/10 rounded-bl-[5rem] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-700" />
